@@ -21,7 +21,7 @@ class Solution2:
     # This solution works for follow up question 
     # i.e. non-english letters or symbols
 
-class Solution:
+class Solution3:
     def isAnagram(self, s: str, t: str) -> bool:
 
         # checking length of string and returning false if not same
