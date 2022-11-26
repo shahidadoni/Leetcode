@@ -49,3 +49,5 @@ const isSame = (obj1, obj2) => {
   console.log(isValidAnagram("anagram", "nagaram") === true);
   console.log(isValidAnagram("rat", "car") === false);
 })();
+
+module.exports = isValidAnagram;
