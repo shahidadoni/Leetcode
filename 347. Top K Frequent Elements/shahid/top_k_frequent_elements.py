@@ -47,7 +47,7 @@ class Solution1:
 
         return result
 
-# Solution2 (Using Hashmap + heapq.nlargest)
+# Solution2 (Using Hashmap + heapq + heapq.nlargest)
 class Solution2:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 
@@ -78,5 +78,28 @@ class Solution2:
         for i, j in k_largest:
             ans.append(j)
             
+        return ans
+
+# Solution3 (Using Hashmap + heapq + manual selection)
+class Solution3:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+
+        # Creating Hashmap (using collection.Counter) of key as numbers and value as its frequency
+        map = collections.Counter(nums)
+
+        # Initializing list as heap
+        heap = []
+
+        # Looping for keys
+        for i in map.keys():
+            if len(heap) == k: # If size is k then we dont want to increase the size further 
+                heapq.heappushpop(heap, (map[i], i))
+            else: # Size is not k then freely push values
+                heapq.heappush(heap, (map[i], i))
+		# After this operation the heap contains only k largest values of all the values in nums
+        ans = []
+        while k > 0:
+            k -= 1
+            ans.append(heapq.heappop(heap)[1])
         return ans
 
